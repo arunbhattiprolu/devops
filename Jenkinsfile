@@ -1,3 +1,4 @@
+properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
    agent any
    stages {
@@ -6,5 +7,11 @@ pipeline {
           echo 'Hello World'
       }
     }
+<<<<<<< Updated upstream
   }
 }
+=======
+   }
+  }
+
+>>>>>>> Stashed changes
