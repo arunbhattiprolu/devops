@@ -7,11 +7,5 @@ pipeline {
           echo 'Hello World'
       }
     }
-<<<<<<< Updated upstream
   }
 }
-=======
-   }
-  }
-
->>>>>>> Stashed changes
