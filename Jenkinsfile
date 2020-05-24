@@ -1,11 +1,7 @@
-Jenkinsfile ()
 pipeline {
-    agent any 
-    stages {
-        stage('Build') { 
-            steps {
-                sh 'make' 
-            }
-        }
+  stages {
+    stage('HelloWorld') {
+      steps {
+        echo 'Hello World'
+      }
     }
-}   
