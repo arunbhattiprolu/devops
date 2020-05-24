@@ -7,3 +7,5 @@ pipeline {
                 sh 'make' 
             }
         }
+    }
+}   
