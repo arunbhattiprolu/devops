@@ -1,10 +1,10 @@
-Jenkinsfile ()
+Jenkinsfile (Declarative pipeline)
 pipeline {
     agent any 
     stages {
         stage('Build') { 
             steps {
-                sh 'make' 
+                sh 'echo "This is my first step"'
             }
         }
     }
