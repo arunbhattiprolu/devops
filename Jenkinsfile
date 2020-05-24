@@ -5,3 +5,4 @@ pipeline {
         echo 'Hello World'
       }
     }
+  }
