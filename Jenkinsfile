@@ -5,15 +5,22 @@ pipeline {
    	 stage('checkout code'){
    	 	steps {
    	 	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '84c7d5cb-15a4-44f7-a7a1-65b7fea17f22', url: 'https://github.com/arunbhattiprolu/devops.git']]])
-   	 	dir("devops") {
-   	 		sh "pwd"
-   	 	}
    	  }
+
    	 }
       stage('HelloWorld') {
         steps {
           echo 'Hello World'
       }
     }
+      stage('subdir'){
+      	steps{
+      		sh "$PWD"
+          dir('multimodule'){
+            sh "$PWD"
+          }
+          sh "$PWD"
+      	}
+      }
   }
 }
