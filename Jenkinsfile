@@ -15,11 +15,9 @@ pipeline {
     }
       stage('subdir'){
       	steps{
-      		sh "$PWD"
           dir('multimodule'){
             sh "$PWD"
           }
-          sh "$PWD"
       	}
       }
   }
