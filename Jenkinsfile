@@ -18,6 +18,12 @@ pipeline {
       	    dir('multimodule'){
                 stash name: 'sources', useDefaultExcludes: false
           }
+      stage('subdir'){
+      	steps{
+          dir('multimodule'){
+            sh "PWD"
+          }
+      	}
       }
   }
 }
