@@ -15,7 +15,6 @@ pipeline {
     }
       stage('checkout this code'){
          steps{
-      	  checkoutrepo{}
       	    dir('multimodule'){
                 stash name: 'sources', useDefaultExcludes: false
           }
