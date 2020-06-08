@@ -13,6 +13,11 @@ pipeline {
           echo 'Hello World'
       }
     }
+      stage('checkout this code'){
+      	checkoutrepo{}
+      	    dir('multimodule'){
+                stash name: 'sources', useDefaultExcludes: false
+          }
       stage('subdir'){
       	steps{
           dir('multimodule'){
@@ -22,3 +27,6 @@ pipeline {
       }
   }
 }
+      stage('reuse the code'){
+      	unstash 'sources'
+      }
