@@ -13,14 +13,14 @@ pipeline {
           echo 'Hello World'
       }
     }
-      stage('subdir'){
-      	steps{
-      		sh "$PWD"
-          dir('multimodule'){
-            sh "$PWD"
+      stage('checkout this code'){
+      	checkoutrepo{}
+      	    dir('multimodule'){
+                stash name: 'sources', useDefaultExcludes: false
           }
-          sh "$PWD"
-      	}
       }
   }
 }
+      stage('reuse the code'){
+      	unstash 'sources'
+      }
