@@ -25,5 +25,15 @@ pipeline {
       	unstash 'sources'
          }
       }
+      stage('docker build and push'){
+         steps {
+          script {
+            withDockerRegistry(credentialsId: 'saiarun', url: 'https://hub.docker.com/repository/registry-1.docker.io/saiarun/firstimage/') {
+              sh 'docker pull sairun/firstimage:1.0 || (docker build -f dockerfile -t saiarun/firstimage:2.0 && docker push saiarun/firstimage:2.0)'
+
+              }
+            }
+          }
+        }
+    }
   }
-}
