@@ -16,7 +16,7 @@ pipeline {
       stage('checkout this code'){
          steps{
       	    dir('multimodule'){
-                stash name: 'sources', useDefaultExcludes: false
+                stash includes: '/Sources/**/*', name: 'Sources'
           }
         }
       }
