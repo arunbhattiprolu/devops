@@ -25,14 +25,16 @@ pipeline {
       	unstash 'sources'
          }
       }
-      stage('docker build and push'){
-         steps {
-          script {
-            withDockerRegistry(credentialsId: 'saiarun', url: 'https://hub.docker.com/repository/registry-1.docker.io/saiarun/ubuntu/') {
-              sh 'docker pull sairun/ubuntu:14.04'
-              }
+      def myImg
+      stage ("Build image") {
+        // download the dockerfile to build from
+            git 'https://github.com/arunbhattiprolu/devops.git'
+
+        // build our docker image
+            myImg = docker.build 'my-image:snapshot'
             }
-          }
-        }
+      }
+
+      
     }
-  }
+    
