@@ -13,7 +13,7 @@ pipeline {
           echo 'Hello World'
       }
     }
-      stage('checkout this code'){
+      stage('stashing file'){
          steps{
       	    dir('multimodule'){
                 stash includes: '/Sources/**/*', name: 'Sources'
@@ -25,13 +25,14 @@ pipeline {
       	unstash 'sources'
          }
       }
-      def myImg
+      
       stage ("Build image") {
+         def myImg
         // download the dockerfile to build from
             git 'https://github.com/arunbhattiprolu/devops.git'
 
         // build our docker image
-            myImg = docker.build 'my-image:snapshot'
+            myImg = docker.build 'Ubuntu:latest'
             }
       }
 
