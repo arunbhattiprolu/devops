@@ -28,8 +28,8 @@ pipeline {
       stage('docker build and push'){
          steps {
           script {
-            withDockerRegistry(credentialsId: 'saiarun', url: 'https://hub.docker.com/repository/registry-1.docker.io/saiarun/firstimage/') {
-              sh 'docker pull sairun/firstimage:1.0'
+            withDockerRegistry(credentialsId: 'saiarun', url: 'https://hub.docker.com/repository/registry-1.docker.io/saiarun/ubuntu/') {
+              sh 'docker pull sairun/ubuntu:14.04'
               }
             }
           }
