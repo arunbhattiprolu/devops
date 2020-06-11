@@ -33,7 +33,8 @@ environment {
       stage('Cloning our Git') {
         steps {
           git 'https://github.com/arunbhattiprolu/devops.git'
-}
+              }
+            }
      stage('Building our image') {
        steps{
          script {
@@ -41,7 +42,6 @@ environment {
        }
      }
     }
-  }
-      
-}
-    
+     
+ }
+}    
