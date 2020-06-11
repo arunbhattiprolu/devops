@@ -1,5 +1,10 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
+environment {
+    registry = "saiarun/ubuntu"
+    registryCredential = 'saiarun'
+    dockerImage = ''
+         }
    agent any
    stages {
    	 stage('checkout code'){
@@ -26,16 +31,14 @@ pipeline {
          }
       }
       
-      stage ("Build image") {
-         def myImg
-        // download the dockerfile to build from
-            git 'https://github.com/arunbhattiprolu/devops.git'
-
-        // build our docker image
-            myImg = docker.build 'Ubuntu:latest'
-            }
-      }
-
-      
+     stage('Building our image') {
+       steps{
+         script {
+           dockerImage = docker.build registry + ":$BUILD_NUMBER"
+       }
+     }
     }
+  }
+      
+}
     
