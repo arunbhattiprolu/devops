@@ -28,7 +28,7 @@ pipeline {
      stage('Pulling our image') {
        steps {
         script {
-           withDockerRegistry([credentialsId: 'something', url: 'docker.io/my-account']) {
+           withDockerRegistry([credentialsId: ''saiarun'', url: 'https://hub.docker.com/repository/registry-1.docker.io/saiarun/firstimage']) {
            sh 'docker pull saiarun/firstimage:1.0'
    
              }
