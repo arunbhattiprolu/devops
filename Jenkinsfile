@@ -1,7 +1,7 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
 environment {
-    registry = "saiarun/ubuntu"
+    registry = "saiarun/hello-world"
     registryCredential = 'saiarun'
     dockerImage = ''
          }
