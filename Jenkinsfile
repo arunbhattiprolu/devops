@@ -1,10 +1,5 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
-environment {
-    registry = "saiarun/hello-world"
-    registryCredential = 'saiarun'
-    dockerImage = ''
-         }
    agent any
    stages {
    	 stage('checkout code'){
@@ -30,13 +25,16 @@ environment {
       	unstash 'sources'
          }
       }
-     stage('Building our image') {
-       steps{
-         script {
-           dockerImage = docker.build registry + ":$BUILD_NUMBER"
-       }
-     }
-    }
+     stage('Pulling our image') {
+       steps {
+        script {
+           withDockerRegistry([credentialsId: 'something', url: 'docker.io/my-account']) {
+           sh 'docker pull saiarun/firstimage:1.0'
+   
+             }
      
+         }
+      }
+   }
  }
-}    
+}
