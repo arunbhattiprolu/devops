@@ -27,7 +27,7 @@ pipeline {
       }
       stage("Env Variables") {
             steps {
-                sh "printenv"
+                echo "The build ID is ${env.BUILD_ID}"
             }
         }
    }
