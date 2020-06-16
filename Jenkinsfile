@@ -32,7 +32,7 @@ pipeline {
                 echo "The Jenkins url is ${JENKINS_URL}"
                 echo "The Node name is ${NODE_NAME}"
                 echo "The Jenkins Home is ${JENKINS_HOME}"
-                echo "Work Space is ${WORk_SPACE}"
+                echo "Work Space is ${WORkSPACE}"
                echo "Build Tag is ${BUILD_TAG}"
                
             }
