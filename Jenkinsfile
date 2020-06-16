@@ -25,16 +25,12 @@ pipeline {
       	unstash 'sources'
          }
       }
-     stage('Pulling our image') {
-       steps {
-        script {
-           withDockerRegistry([credentialsId: 'saiarun', url: 'https://hub.docker.com/repository/registry-1.docker.io/saiarun/firstimage']) {
-           sh 'docker pull saiarun/firstimage:1.0'
-   
-             }
-     
-         }
-      }
+      
+      stage("Env Variables") {
+            steps {
+                sh "printenv"
+            }
+        }
    }
  }
 }
