@@ -25,7 +25,6 @@ pipeline {
       	unstash 'sources'
          }
       }
-      
       stage("Env Variables") {
             steps {
                 sh "printenv"
