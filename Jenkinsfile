@@ -31,7 +31,9 @@ pipeline {
                 echo "The build url is ${env.BUILD_URL}"
                 echo "The Jenkins url is ${JENKINS_URL}"
                 echo "The Node name is ${NODE_NAME}"
-               echo "The Jenkins Home is ${JENKINS_HOME}"
+                echo "The Jenkins Home is ${JENKINS_HOME}"
+                echo "Work Space is ${WORk_SPACE}"
+               echo "Build Tag is ${BUILD_TAG}"
                
             }
         }
