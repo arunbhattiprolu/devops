@@ -28,6 +28,7 @@ pipeline {
       stage("Env Variables") {
             steps {
                 echo "The build ID is ${env.BUILD_ID}"
+               echo "The build url is ${env.BUILD_URL}"
             }
         }
    }
