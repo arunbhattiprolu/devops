@@ -28,7 +28,8 @@ pipeline {
       stage("Env Variables") {
             steps {
                 echo "The build ID is ${env.BUILD_ID}"
-               echo "The build url is ${env.BUILD_URL}"
+                echo "The build url is ${env.BUILD_URL}"
+                echo "The Jenkins url is ${JENKINS_URL}"
             }
         }
    }
