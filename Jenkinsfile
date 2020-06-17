@@ -36,6 +36,13 @@ pipeline {
                echo "Build Tag is ${BUILD_TAG}"
                
             }
-        }
+        },
+         stage("Build Count"){
+            steps{
+               for i in {jobname1};
+                  do count = $(curl -s http://http://localhost:8080/sample/$i/api/json?tree\=nextBuildNumber | jq . nextBuildNumber-1) && echo "\nJobName: $i |nNUmber of builds:$count", done;)
+            }
+         
+         }
    }
  }
