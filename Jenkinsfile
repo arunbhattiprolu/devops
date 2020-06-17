@@ -36,7 +36,7 @@ pipeline {
                echo "Build Tag is ${BUILD_TAG}"
                
             }
-        },
+        }
          stage("Build Count"){
             steps{
                for i in {jobname1};
