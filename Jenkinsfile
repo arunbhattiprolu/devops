@@ -40,7 +40,7 @@ pipeline {
          stage("Build Count"){
             steps{
                sh '''for i in {sample};
-                  do count = $(curl -s http://http://localhost:8080/sample/$i/api/json?tree\\=nextBuildNumber | jq . nextBuildNumber-1) && echo "\\nJobName: $i |nNUmber of builds:$count", done;)
+                  do count = $(curl -s http://localhost:8080/sample/$i/api/json?tree\\=nextBuildNumber | jq . nextBuildNumber-1) && echo "\\nJobName: $i |nNUmber of builds:$count", done;)
             '''
             }
          
