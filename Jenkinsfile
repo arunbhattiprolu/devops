@@ -1,4 +1,3 @@
-#just to check
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 properties([pipelineTriggers([githubPush()])]);
 pipeline {
