@@ -12,6 +12,7 @@ Install git on the windows and configure the git path on windows in the Jenkins.
 
 # Trigger a build for Jenkins Pipeline from github using a webhook
 
+1.
 Login to github -> choose dropdown to the extreme right at Profile Icon -> select "your repositories"-> Devops(In this case)
 
 Under username/repository -> find settings(for your repository) -> on the left navigation plane -> choose webhook option -> Add Webhook -> Provide yout github account password
@@ -21,6 +22,7 @@ As we understand from the above article that we need to place ngrok forwarding u
 
 Place http://e4044974995f.ngrok.io/github-webhook/ under payload url.
 
+2.
 Now  login to Jenkins(http://e4044974995f.ngrok.io/) and choose option Managejenkins -> ConfigureSystem -> scrolldown and check if GitHub Pull Request Builder section is available 
 else globalpullrequester plugin is installed.
 
@@ -31,8 +33,19 @@ Configure  GitHub Server API URL - https://api.github.com
              Connected to https://api.github.com as null (null) login: arunbhattiprolu(click on connectoAPI button)
            check in automange webhooks checkbox
 Apply and save
-            
+ 
+Configure Job -> choose Build Triggers section and checkboxes GitHub Pull Request Builder, Use github hooks for build triggering, GitHub hook trigger for GITScm polling.
+Uncheck the Lightweight checkout checkbox
+Apply and Save
 
+3.
+Now once git commit is  made to origin/feature branch using git push origin "feature_jenkins_update" , create a pull request to merge the commit from feature_jenkins -> master.
+
+Navigate to jenkins server and verify to see the trigger build
+
+
+
+           
 
 
 
