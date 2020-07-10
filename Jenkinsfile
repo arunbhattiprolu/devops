@@ -13,12 +13,6 @@ pipeline {
           echo 'Hello World'
       }
     }
-      stage('checkout my code'){
-         steps{
-            dir('multimodule'){
-                stash includes: '/Sources/**/*', name: 'Sources'
-          }
-      }
       stage('reuse the code'){
          steps{
             unstash 'sources'
