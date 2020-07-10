@@ -35,6 +35,20 @@ Configure  GitHub Server API URL - https://api.github.com
 Apply and save
  
 Configure Job -> choose Build Triggers section and checkboxes GitHub Pull Request Builder, Use github hooks for build triggering, GitHub hook trigger for GITScm polling.
+
+Under Credentials -> click on the advanced button and fill in the following details
+Name	origin
+Refspec	+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*
+Branches to build	
+ Branch Specifier (blank for 'any') leave it blank to search for all branches or pull request id's 
+ if the Branch Specifier is ${sha1}
+ if the "base" branch and the "compare" branch can be merged
+ this runs the test on the merged result, e.g. /origin/pr/4/merge
+else
+ this runs the test on the head of the compare branch, e.g. /origin/pr/4/head
+ if the Branch Specifier is ${ghbprbActualCommit}
+ this runs the test on the head of the compare branch, e.g. /origin/pr/4/head
+
 Uncheck the Lightweight checkout checkbox
 Apply and Save
 
