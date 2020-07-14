@@ -2,9 +2,8 @@ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', 
 pipeline {
    agent {
       docker {
-            image 'maven:3-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }
+            image 'node:14-alpine'
+              }
       }
    stages {
       stage('checkout code'){
@@ -18,9 +17,9 @@ pipeline {
           echo 'Hello World'
       }
     }
-      stage('Build') {
+      stage('Test') {
             steps {
-                sh 'mvn -B'
+                sh 'node --version'
             }
         }
       
