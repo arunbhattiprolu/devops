@@ -1,6 +1,13 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
-   agent any
+   agent {
+
+      docker {
+            image 'maven:3-alpine'
+            args '-v $HOME/.m2:/root/.m2'
+        }
+        
+   }
    stages {
       stage('checkout code'){
        steps {
@@ -13,18 +20,12 @@ pipeline {
           echo 'Hello World'
       }
     }
-      stage('checkout my code'){
-         steps{
-            dir('multimodule'){
-                stash includes: '/Sources/**/*', name: 'Sources'
-          }
-      }
-      stage('reuse the code'){
-         steps{
-            unstash 'sources'
-         }
-      }
+      stage('Build') {
+            steps {
+                sh 'mvn -B'
+            }
+        }
+      
    }
- }
-}     
+ }     
    
