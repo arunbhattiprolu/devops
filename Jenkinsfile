@@ -1,13 +1,11 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
    agent {
-
       docker {
             image 'maven:3-alpine'
             args '-v $HOME/.m2:/root/.m2'
         }
-        
-   }
+      }
    stages {
       stage('checkout code'){
        steps {
