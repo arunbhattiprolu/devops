@@ -1,4 +1,4 @@
-properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
+ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
    agent {
       docker {
@@ -17,12 +17,14 @@ pipeline {
           echo 'Hello World'
       }
     }
-      stage('Test') {
+      stage('runcontainer') {
             steps {
-                sh 'docker image ls'
+                withDockerContainer(args: 'docker run hello-world', image: 'hello-world:latest') {
+                     // some block
+              } 
             }
         }
       
    }
- }     
+ }    
    
