@@ -2,7 +2,7 @@ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', 
 pipeline {
    agent {
       docker {
-            image 'node:14-alpine'
+            image 'hello-world'
               }
       }
    stages {
@@ -19,7 +19,7 @@ pipeline {
     }
       stage('Test') {
             steps {
-                sh 'node --version'
+                sh 'docker image ls'
             }
         }
       
