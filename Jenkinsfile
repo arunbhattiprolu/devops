@@ -2,6 +2,7 @@ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', 
 pipeline {
   environment {
     registry = "saiarun/devops"
+    registry = "saiarun/firstimage"
     registryCredential = 'saiarun'
     dockerImage = ''
   }
@@ -42,4 +43,5 @@ pipeline {
       
   }
 }     
+}  
    
