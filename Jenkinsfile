@@ -1,11 +1,11 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '', numToKeepStr: '10']]]);
 pipeline {
-   agent {
-      docker {
-            image 'maven:3-alpine'
-            args '-v $HOME/.m2:/root/.m2'
-        }
-      }
+  environment {
+    registry = "saiarun/devops"
+    registryCredential = 'saiarun'
+    dockerImage = ''
+  }
+   agent any 
    stages {
       stage('checkout code'){
        steps {
@@ -13,17 +13,33 @@ pipeline {
        }
 
      }
+     stage('Cloning our Git') {
+      steps {
+        git 'https://github.com/arunbhattiprolu/devops.git'
+         }
+     }
+     stage('Building our image') {
+      steps{
+       script {
+        dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          }
+        }
+      }
+      stage('Deploy our image') {
+       steps {
+        script {
+         docker.withRegistry( '', registryCredential ) {
+          dockerImage.push()
+           }
+          }
+        }
+      }
       stage('HelloWorld') { 
         steps {
           echo 'Hello World'
-      }
-    }
-      stage('Build') {
-            steps {
-                sh 'mvn -B'
-            }
         }
+      } 
       
-   }
- }     
+  }
+}     
    
