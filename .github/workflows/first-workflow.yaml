@@ -1,0 +1,17 @@
+Name:  this is my first workflow
+on:  [push]
+
+
+jobs:
+  run-shell:
+      runs-on:   ubuntu-latest
+      steps: #block sequence
+          - name: echo string
+            run:  "hello world"
+
+          - name: get environment versions
+            run: | # literal block string
+               echo "checking environment versions"
+               echo "Node version: $(node --version)"
+               echo "Npm version:  $(npm --version)"
+
