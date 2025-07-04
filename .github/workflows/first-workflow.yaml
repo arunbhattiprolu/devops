@@ -1,3 +1,4 @@
+
 on:  [push]
 
 
@@ -6,7 +7,7 @@ jobs:
       runs-on:   ubuntu-latest
       steps: #block sequence
           - name: echo string
-            run:  "hello world"
+            run:  echo "hello world"
 
           - name: get environment versions
             run: | # literal block string
